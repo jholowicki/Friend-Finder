@@ -1,0 +1,29 @@
+{
+  "name": "friend-finder",
+  "version": "1.0.0",
+  "description": "node and express server demo app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jholowicki/Friend-Finder.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "input"
+  ],
+  "author": "Joy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jholowicki/Friend-Finder/issues"
+  },
+  "homepage": "https://github.com/jholowicki/Friend-Finder#readme",
+  "devDependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "path": "^0.12.7"
+  }
+}
