@@ -15,56 +15,46 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-// Reservation DATA
+// Friend DATA
 // =============================================================
-var tables = [];
-var waitlist = [];
+var friends = [];
+var matches = [];
 
 // Routes
 // =============================================================
 
-// Basic route that sends the user first to the AJAX Page
+// Basic route that sends the user to the app's first page.
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Basic route that sends the user to the page for making reservations.
-app.get("/reserve", function(req, res) {
-  res.sendFile(path.join(__dirname, "reserve.html"));
+// Basic route that sends the user to the survey page.
+app.get("/survey", function(req, res) {
+  res.sendFile(path.join(__dirname, "survey.html"));
 });
 
-// Basic route that sends the user to the page for looking at current reservations.
-app.get("/tables", function(req, res) {
-    res.sendFile(path.join(__dirname, "tables.html"));
-});
 
-// Route to send current data (as JSON) on reserved and waitlisted parties.
+// Route to send current data (as JSON) on Friend's List (API).
 
-app.get("/tabledata", function(req, res) {
+app.get("/friendslist", function(req, res) {
   res.send(
     JSON.stringify({
-      tables: tables,
-      waitlist: waitlist
+      friends: friends
     })
   )
   res.end();
 })
 
-// Creates new table reservations.
+// Creates a new friend upon survey submission.
 app.post("/api/new", function(req, res) {
-  var newtable = req.body;
-  newtable.routeName = newtable.name.replace(/\s+/g, "").toLowerCase();
+  var newFriend = req.body;
+  newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newtable);
+  console.log(newFriend);
 
-  if (tables.length>4) {
-    waitlist.push(newtable);
-  }
-  else {
-    tables.push(newtable);
-  }
+  friends.push(newFriend);
 
-  res.json(newtable);
+  res.json(newFriend);
 });
 
 // Starts the server to begin listening.

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>FriendFinder</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+  h1,
+  h2 {
+    text-align: center;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>FriendFinder</h1>
+      <h2>Find friends through matching compatability!</h2>
+      <hr>
+      <br>
+      <a href="/survey"><button type="button" class="btn btn-survey btn-lg"><span class="glyphicon glyphicon-plus"></span> Take the Survey</button></a>
+    </div>
+
+    <script type="text/javascript">
+
+        // AJAX/API call for current Friends list.
+        $.get("/friendslist", function(data) {
+          var parsedData = JSON.parse(data);
+          console.log(parsedData);
+
+        });
+
+    </script>
+
+</body>
+</html>
